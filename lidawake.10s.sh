@@ -3,7 +3,7 @@
 # <swiftbar.hideRunInTerminal>true</swiftbar.hideRunInTerminal>
 # <swiftbar.hideLastUpdated>true</swiftbar.hideLastUpdated>
 # Toggle "stay awake with the lid closed" (pmset disablesleep). SwiftBar plugin + CLI.
-state() { pmset -g | awk '/SleepDisabled/{print $2}'; }
+state() { pmset -g | awk '/SleepDisabled/{v=$2} END{print v+0}'; }  # key absent = 0
 
 if [ "$1" = toggle ]; then
   new=$(( 1 - $(state) ))

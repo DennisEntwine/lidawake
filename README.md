@@ -15,6 +15,7 @@ Installs [SwiftBar](https://github.com/swiftbar/SwiftBar) (via Homebrew) and a s
 Uninstall:
 
 ```bash
+sudo /usr/bin/pmset -a disablesleep 0
 sudo rm /etc/sudoers.d/lidawake /usr/local/bin/lidawake
-rm ~/.swiftbar/lidawake.10s.sh
+rm -f ~/.swiftbar/lidawake.10s.sh "$(defaults read com.ameba.SwiftBar PluginDirectory)/lidawake.10s.sh"
 ```
