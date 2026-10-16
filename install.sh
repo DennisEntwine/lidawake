@@ -25,5 +25,7 @@ sudo install -m 0440 -o root -g wheel "$tmp" /etc/sudoers.d/lidawake
 rm -f "$tmp"
 sudo mkdir -p /usr/local/bin && sudo ln -sf "$DIR/lidawake.10s.sh" /usr/local/bin/lidawake
 
+# Start SwiftBar at login, so the button is there after every reboot.
+osascript -e 'tell application "System Events" to if not (exists login item "SwiftBar") then make login item at end with properties {path:"/Applications/SwiftBar.app", hidden:false}' >/dev/null
 open -a SwiftBar
 echo "Done. Menu bar: moon = normal, sun = stays awake with lid closed. CLI: lidawake toggle"

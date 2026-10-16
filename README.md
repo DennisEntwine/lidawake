@@ -9,6 +9,7 @@ curl -fsSL https://raw.githubusercontent.com/DennisEntwine/lidawake/main/install
 - Moon icon: normal, closing the lid sleeps.
 - Sun icon: stays awake with the lid closed. Turn it off before it goes in a bag.
 - CLI: `lidawake toggle`
+- Starts at login (adds SwiftBar to your Login Items).
 
 Installs [SwiftBar](https://github.com/swiftbar/SwiftBar) (via Homebrew) and a sudoers rule allowing only `pmset -a disablesleep 0|1` without a password.
 
@@ -18,4 +19,5 @@ Uninstall:
 sudo /usr/bin/pmset -a disablesleep 0
 sudo rm /etc/sudoers.d/lidawake /usr/local/bin/lidawake
 rm -f ~/.swiftbar/lidawake.10s.sh "$(defaults read com.ameba.SwiftBar PluginDirectory)/lidawake.10s.sh"
+osascript -e 'tell application "System Events" to delete login item "SwiftBar"'  # only if nothing else uses SwiftBar
 ```
